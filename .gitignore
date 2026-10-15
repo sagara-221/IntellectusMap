@@ -1,0 +1,46 @@
+# Environments and secrets
+.venv/
+.what/
+.env
+.env.*
+!.env.example
+*.env
+*.env.*
+!*.env.example
+
+# Local credentials & scratch files
+gcp_config/
+scratch/
+memo/
+tmp/
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl.backup
+
+# Databases & local state
+*.db
+*.db-shm
+*.db-wal
+
+# Python caches
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Node / Frontend build outputs & dependencies
+node_modules/
+dist/
+.npm/
+.npm-cache/
+.tools/
+test-results/
+*.tsbuildinfo
+
+# OS & Logs
+.DS_Store
+Thumbs.db
+*.log

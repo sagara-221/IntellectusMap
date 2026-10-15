@@ -1,0 +1,41 @@
+/* The map keeps its full width when the notebook is opened. */
+.live-atlas .atlas-workspace,.live-atlas .atlas-workspace.large-map{display:flex;grid-template-columns:none;min-height:540px;height:calc(100dvh - 130px);width:100%}
+.live-atlas .atlas-workspace>.map-panel{flex:1;width:100%}
+.live-atlas .panel-heading>div:last-child{display:flex;align-items:center;gap:12px}
+.live-atlas .atlas-map .basecamp-dock{display:flex;align-items:flex-start;gap:12px;right:16px;top:16px;width:auto;max-width:calc(100% - 32px)}
+.live-atlas .basecamp-dock .crew-camp{position:static;flex:none;width:180px;margin:0}
+.live-atlas .basecamp-dock .atlas-inspector{position:relative;inset:auto;flex:none;width:380px;height:min(690px,calc(100dvh - 235px));max-height:none;min-height:320px;margin:0;background:#fbf7ec;animation:none}
+.live-atlas .basecamp-dock .atlas-inspector.notebook-wide{width:min(650px,calc(100vw - 255px))}
+.live-atlas .atlas-inspector .inspector-scroll{position:relative;overflow-y:auto;overflow-x:hidden;flex:1;min-height:0;overscroll-behavior:contain}
+.live-atlas .atlas-inspector .notebook-page{min-height:100%;font-size:14px;color:#253e32}
+.live-atlas .atlas-inspector .inspector-heading>div:last-child{display:flex;gap:8px}
+.live-atlas .atlas-inspector .inspector-tabs{display:flex;gap:3px;padding:0 6px}
+.live-atlas .atlas-inspector .inspector-tabs button{flex:1;min-width:0;font-size:12px;white-space:nowrap;padding:9px 4px}
+.live-atlas .atlas-inspector .graph-selection .survey-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.live-atlas .atlas-inspector .survey-options button{font-size:13px;min-height:42px;padding:8px}
+.live-atlas .atlas-inspector .survey-options button:last-child{grid-column:1/-1}
+.live-atlas .atlas-inspector .concept-links{max-height:none;overflow:visible;flex-wrap:wrap}
+.live-atlas .atlas-inspector .detail-content{padding:0 16px 20px}
+.live-atlas .atlas-inspector .question-body,.live-atlas .atlas-inspector .feedback{overflow:visible}
+.live-atlas .atlas-inspector .choice,.live-atlas .atlas-inspector .question-markdown{font-size:14px;line-height:1.65}
+.live-atlas .atlas-inspector .chat-panel{border:0;border-radius:0;min-height:0;display:flex;flex-direction:column;height:100%;padding:12px}
+.live-atlas .atlas-inspector .chat-messages{min-height:160px;max-height:none;overflow:visible}
+.live-atlas .atlas-inspector .chat-compose textarea{min-height:90px}
+.live-atlas .notebook-page-footer{display:flex;flex-direction:row;align-items:center;justify-content:space-between;flex:none;margin:0;padding:7px 16px;background:#eee4c9;border-top:1px solid #c9b994}
+.live-atlas .conversation-evidence{padding:16px;font-size:13px;line-height:1.65}
+.live-atlas .conversation-evidence details{padding:12px 0;border-top:1px solid #d5c6a5}
+.live-atlas .conversation-evidence blockquote{margin:12px 0;padding:8px 12px;border-left:3px solid #7b9270;background:#f0eddd}
+.live-atlas .record-source-counts{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;font-size:12px;color:#405d47}
+.live-atlas .notebook-page-turn{pointer-events:none;position:absolute;top:0;right:0;width:24px;height:72px;background:linear-gradient(110deg,transparent,#b7a77755);animation:atlas-page-turn .28s ease-out both}
+@keyframes atlas-page-turn{from{opacity:1;transform:translateX(-16px) skewY(-12deg)}to{opacity:0;transform:translateX(12px)}}
+.atlas-view-link{font-size:12px;white-space:nowrap}
+.live-atlas [hidden]{display:none!important}
+@media(max-width:900px){
+  .live-atlas .atlas-workspace{height:calc(100dvh - 162px);min-height:450px}
+  .live-atlas .atlas-workspace>.map-panel{height:auto;min-height:0}
+  .live-atlas .basecamp-dock .atlas-inspector,.live-atlas .basecamp-dock .atlas-inspector.notebook-wide{position:fixed;inset:12px;width:auto;height:auto;min-height:0;z-index:90}
+  .live-atlas .basecamp-dock .crew-camp{width:166px}
+  .live-atlas .main-nav{overflow-x:auto}
+  .live-atlas .user-name{display:none}
+}
+@media(prefers-reduced-motion:reduce){.live-atlas .notebook-page-turn{animation:none}}

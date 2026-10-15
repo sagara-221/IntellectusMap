@@ -1,0 +1,325 @@
+/* The live atlas keeps the original application controller and all its pages. */
+.atlas-departure,.atlas-login{max-width:1160px;margin:22px auto 0;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(350px,1fr);gap:38px 48px;align-items:center}
+.atlas-overline{font-size:11px;letter-spacing:.23em;color:#798367;display:block;margin-bottom:14px}
+.atlas-intro h1{font-family:'Noto Serif JP',serif;font-size:clamp(27px,2.7vw,40px);font-weight:600;letter-spacing:.06em;line-height:1.6;color:#354d3e}
+.atlas-intro>p{font-size:13px;line-height:2.1;margin-top:17px;color:#73816b}
+.atlas-cover{margin-top:25px;position:relative;border-top:1px solid #c8c5ab;border-bottom:1px solid #c8c5ab;background:#ede9d88c}
+.atlas-cover-title{display:flex;justify-content:space-between;align-items:center;padding:17px 20px 0;color:#79856a;font-size:8px;letter-spacing:.24em}
+.atlas-cover-map{display:block;width:100%;height:auto;margin-top:-8px}
+.atlas-cover-caption{display:flex;align-items:center;gap:12px;padding:0 20px 12px;margin-top:-8px;font-size:11px;color:#697a5e}
+.atlas-cover-caption .miner{width:36px;height:36px;flex-shrink:0}
+.atlas-cover>small{display:block;font-size:9px;color:#8e927f;padding:0 20px 14px}
+.atlas-departure-form,.atlas-login-card{position:relative;padding:32px;background:#fffcf3;box-shadow:0 10px 30px #5148290a;border:1px solid #d5ceb7;border-top:4px double #9aa78b;border-radius:3px}
+.atlas-form-heading{display:flex;align-items:center;gap:13px;margin-bottom:27px;color:#4f684f}
+.atlas-form-heading>div>span{font-size:8px;letter-spacing:.18em;color:#949982}.atlas-form-heading h2{font-size:19px;font-family:'Noto Serif JP',serif;margin-top:4px}
+.atlas-sheet-number{margin-left:auto;font-family:serif;font-size:35px;font-style:italic;color:#d4d4bd}
+.atlas-departure-form label{font-size:12px;color:#53664f}
+.atlas-departure-form input{height:51px;font-size:16px;border-radius:3px;padding:12px 14px;background:#fffef8}
+.atlas-departure-form textarea{resize:vertical;min-height:100px;font-size:12px;line-height:1.9;border-radius:3px;background:#fffef8}
+.atlas-theme-examples{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font-size:10px;margin-top:11px;margin-bottom:25px;color:#9a9d89}
+.atlas-theme-examples button{padding:4px 8px;background:#efefdf;color:#6b7c5d;border:1px solid #daddc7;border-radius:3px;font-size:10px}
+.atlas-field-hint{font-size:10px;line-height:1.8;color:#939780;margin-top:8px}
+.atlas-departure-note{display:flex;align-items:flex-start;gap:10px;border-top:1px dashed #d2d2ba;margin-top:24px;padding-top:18px;color:#7f8c6c;font-size:11px;line-height:1.9}.atlas-departure-note svg{margin-top:3px;flex-shrink:0}
+.live-atlas .atlas-departure-button{width:100%;margin-top:23px;min-height:51px;font-size:13px;border-radius:3px;background:#405f47;box-shadow:0 3px 0 #294432}.atlas-departure-button>svg:last-child{margin-left:auto}
+.atlas-departure-status{font-size:9px;color:#8f957f;line-height:1.9;margin-top:13px;min-height:18px;text-align:center}
+.atlas-journey{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);list-style:none;margin:0;padding:25px 0;border-top:1px solid #d0cfb9;gap:25px}
+.atlas-journey li{display:flex;gap:15px;align-items:start}.atlas-journey li>span{color:#97a482;font-family:serif;font-style:italic;font-size:25px;line-height:1.3}.atlas-journey strong{font-size:12px;font-weight:500}.atlas-journey p{font-size:10px;color:#89937b;margin-top:5px}
+.atlas-login-card{display:flex;flex-direction:column;align-items:center;text-align:center;gap:24px;padding:48px 30px}.atlas-login-card>svg{color:#7e936d}.atlas-login-card h2{font-size:21px;font-family:serif}.atlas-login-card p{line-height:2;font-size:12px;color:#7b8870}.atlas-login-card small{font-size:10px;line-height:1.9;color:#969c88;max-width:280px}
+@media(max-width:1100px){.atlas-departure,.atlas-login{gap:25px;grid-template-columns:1fr 1fr}.atlas-departure-form{padding:23px}.atlas-intro h1{font-size:29px}}
+@media(max-width:800px){.atlas-departure,.atlas-login{grid-template-columns:minmax(0,1fr);max-width:570px;margin-top:8px;gap:24px}.atlas-intro>p{font-size:12px}.atlas-cover{margin-top:20px}.atlas-cover-map{max-height:240px}.atlas-cover-title{padding-top:10px}.atlas-departure-form{padding:24px}.atlas-journey{grid-template-columns:1fr;gap:20px;padding-top:22px}.atlas-login-card{padding:30px 20px}.atlas-intro h1{font-size:29px}.atlas-cover-caption{font-size:10px}}
+.live-atlas{background:#f3f0e5;color:#34483e;min-height:100vh}
+.live-atlas .topbar{background:#faf6e9;border-bottom:3px double #c8c5ac;gap:16px;padding-inline:24px}
+.live-atlas .brand{font-family:'Noto Serif JP',serif}.live-atlas .brand-icon{background:#375d4b}
+.live-atlas .history-sidebar{background:#edeadb;border-right:3px double #cecbb6}
+.live-atlas .history-card{background:#f9f6eb;border-color:#d7d1bb}.live-atlas .history-card.active{background:#e0e7d5;border-color:#9cae88}
+.live-atlas .main-nav button.active{background:#e4e8d7;color:#375d4b}
+.live-atlas .app-main-layout>main{padding:24px 22px 0;max-width:none;width:100%;min-width:0;margin-inline:0}
+.live-atlas .panel{background:#fcf9ef;border-color:#d7d0b9;border-radius:5px;box-shadow:0 3px 12px #554b2b05}
+.live-atlas .panel-heading{background:#f0ead8;border-bottom:3px double #d3cbb2}
+.live-atlas .panel-heading h2{font-family:'Noto Serif JP',serif;letter-spacing:1px}
+.live-atlas .workspace,.live-atlas .workspace.large-map{grid-template-columns:minmax(0,1fr) 350px;gap:18px;align-items:start}
+.live-atlas .flow-wrap{height:auto;min-height:0;background:#f0f0e5}
+.live-atlas .map-toolbar{background:#f8f4e7;border-color:#ded8c3}
+.live-atlas .question-panel{border-left:4px double #c6bfa3;background:repeating-linear-gradient(0deg,transparent 0 31px,#d4ceb018 31px 32px),#fcf9ef}
+.live-atlas .exploration-stage{background:#eee9d8;color:#6a795c}
+.live-atlas .question-body,.live-atlas .selection-prompt,.live-atlas .feedback,.live-atlas .review-body{background:#fcf9eff5}
+.live-atlas .primary{background:#375d4b}.live-atlas .secondary{background:#f5f1e3;border-color:#d4cbb2}
+.live-atlas .choice{background:#fffdf5;border-color:#d9d3bf}.live-atlas .choice.chosen{background:#e5ecd9;border-color:#8ea57d}
+.live-atlas .graph-selection,.live-atlas .map-footer{background:#f8f5e9;border-color:#d7d1bb}
+.live-atlas .detail-panel{margin-top:20px}.live-atlas .detail-overview,.live-atlas .target-detail,.live-atlas .evidence-detail{background:transparent}
+.live-atlas .map-page{color:#34483e}.live-atlas .map-list-card,.live-atlas .node-row,.live-atlas .summary-card{background:#fffdf5}
+.live-atlas .divergence-drawer{background:#faf6e9}.live-atlas .candidate-card{margin-top:0;background:#f7f2e3}
+.live-atlas input,.live-atlas textarea,.live-atlas select{background:#fffdf5;border-color:#d9d3bf}
+.live-map{min-height:0;font-size:13px;position:relative;line-height:1.5}
+.live-map .atlas-map{height:650px;min-height:450px}
+/* Map labels move with the canvas; dragging must not start text selection.
+   Keep notebook/chat content outside these surfaces selectable. */
+.live-map .map-surface,
+.map-connections .react-flow {
+  -webkit-user-select: none;
+  user-select: none;
+}
+.live-map .map-surface{inset:0}.live-map .map-world{left:calc(50% - 500px);top:calc(50% - 350px)}
+.live-map .terrain{overflow:visible}
+.live-map .crew-camp{top:12px;right:12px;width:200px;padding:10px 12px}
+.live-map .crew-camp .eyebrow{margin:0}.live-map .crew-camp>strong{margin:2px 0 7px}
+.live-map .camp-slot{width:37px}.live-map .camp-slot small{margin:0}
+.live-map .texture-legend{bottom:15px;left:14px;padding:8px;gap:8px;font-size:9px}
+.live-map .map-controls{bottom:58px;right:14px}
+.live-map-tools{position:relative;z-index:7;display:flex;gap:9px;align-items:center;flex-wrap:wrap;padding:10px 12px;background:#f9f6e9;border-bottom:1px solid #d9d3bd}
+.live-map-tools button{background:#edeedc;border:1px solid #d2d6bd;border-radius:4px;padding:6px 8px;font-size:10px}
+.live-map-tools button[aria-pressed=true]{background:#d4e0c8;border-color:#9bb28c}
+.live-map-tools label{display:flex;gap:5px;align-items:center;font-size:10px;white-space:nowrap}
+.live-map-tools input[type=checkbox]{appearance:auto;width:13px;height:13px;margin:0;padding:0;accent-color:#53785b}
+.live-map-tools .understanding-filters{display:flex;align-items:center;flex-wrap:wrap;gap:5px 11px;margin:0;padding:4px 9px;border:1px solid #d2d6bd;border-radius:5px;background:#f4f3e5}
+.understanding-filters legend{float:left;padding:0 7px 0 0;font-size:10px;font-weight:700;color:#526d57}
+.understanding-filters label{cursor:pointer}
+.understanding-filters .filter-dot{width:8px;height:8px;flex:none;border-radius:2px;background:#929e95}
+.understanding-filters .level-low{background:#b6654d}.understanding-filters .level-medium{background:#b69140}.understanding-filters .level-high{background:#498398}
+.live-map .map-place.filtered-site{opacity:.22;scale:.68;transition:opacity .18s,scale .18s}
+.live-map.dense-map .map-place.filtered-site{scale:.44}
+.live-map.overview-map .map-place.filtered-site{scale:.68}
+.live-map .map-place.filtered-site:hover,.live-map .map-place.filtered-site.selected{opacity:.8;scale:.82;z-index:5}
+.live-search{flex:1;min-width:140px;max-width:250px}.live-search input{width:100%;margin:0;padding:7px;height:32px;font-size:11px}
+.live-search-results{position:absolute;left:12px;top:49px;z-index:10;width:min(320px,90%);max-height:240px;overflow:auto;background:#fffdf5;border:1px solid #c8cbb4;box-shadow:0 5px 12px #334b3420}
+.live-search-results button{display:block;width:100%;text-align:left;background:none;border-bottom:1px solid #e0dfcc;padding:10px;font-size:12px}.live-search-results p{padding:15px}
+.live-crew-report{padding:10px 14px;background:#f3eedc;border-top:1px solid #d9d3bd;font-size:11px;color:#516a55}
+.live-crew-report small{display:block;color:#8d947c;font-size:9px;margin-top:4px}
+.live-map .map-place{line-height:1.4}.live-map .map-place strong{font-weight:600;color:#34483e}.live-map .map-place small{font-weight:400}
+@media(min-width:1800px){.live-atlas .workspace,.live-atlas .workspace.large-map{grid-template-columns:minmax(0,1fr) 420px}.live-map .atlas-map{height:760px}}
+@media(max-width:1150px){.live-atlas .workspace,.live-atlas .workspace.large-map{grid-template-columns:1fr}.live-atlas .topbar{flex-wrap:wrap;height:auto;min-height:85px;padding-block:12px}.live-atlas .main-nav{order:3;width:100%}.live-atlas .question-panel{min-height:0}.live-atlas .detail-content{grid-template-columns:1fr}}
+@media(max-width:700px){.live-atlas .app-main-layout>main{padding:14px 10px 0}.live-atlas .topbar{padding-inline:12px;gap:9px}.live-atlas .top-right{gap:6px}.live-atlas .user-name{display:none}.live-atlas .brand{font-size:16px}.live-atlas .brand small{font-size:7px}.live-atlas .main-nav{justify-content:start}.live-atlas .main-nav button{font-size:10px;padding:7px;flex:none}.live-atlas .detail-actions{flex-wrap:wrap}.live-map .atlas-map{height:520px}.live-map .map-world{scale:.48}.live-map .crew-camp{width:165px}.live-map .crew-camp>strong small{display:inline}.live-map .texture-legend{left:8px;bottom:10px;font-size:8px;gap:6px}.live-map .map-controls{bottom:51px}.live-map-tools{gap:7px}.live-map .map-place strong{font-size:16px}.live-atlas .map-footer{flex-wrap:wrap;gap:5px}.live-atlas .setup-fields{grid-template-columns:1fr}.live-atlas .setup-foot{flex-wrap:wrap}}
+
+.atlas-history-close{display:none}@media(max-width:900px){.live-atlas .sidebar-top{position:relative;padding-top:42px}.atlas-history-close{display:grid;place-items:center;position:absolute;right:10px;top:8px;width:28px;height:28px;background:#f9f6eb;border:1px solid #d4cdb8;border-radius:4px}}
+
+@media(max-width:700px){.live-atlas .detail-panel .panel-heading{flex-wrap:wrap}.live-atlas .detail-panel .panel-heading>div:first-child{flex-shrink:0}.live-atlas .detail-actions{width:100%;gap:8px}.live-atlas .detail-actions>span{display:none}}
+
+.map-node-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.map-node-actions small{flex-basis:100%;color:#819077;font-size:10px}
+
+.live-map .node-status-badges{display:flex;flex-direction:column;align-items:center;gap:3px;margin-top:5px;white-space:nowrap;font-size:10px}.live-map .node-status-badges>span{padding:2px 6px;border-radius:3px;line-height:1.5;border:1px solid #b9b9a3;background:#fff9e8;color:#626550}.live-map .node-status-badges .node-status-covered{border-style:dashed;background:#f3f3eb;color:#737669}.live-map .node-status-badges .node-status-error{color:#985d3b;border-color:#cda985}
+
+.live-map .crew-camp>div{flex-wrap:wrap;justify-content:flex-start;gap:5px;max-height:112px;overflow-y:auto}
+
+
+.live-map .decomposition-icon{position:absolute;top:45px;left:calc(50% + 20px);width:28px;height:28px;z-index:2;filter:drop-shadow(0 1px 1px #65583c55)}
+.live-map .decomposition-icon svg{display:block;width:100%;height:100%;image-rendering:pixelated}
+.live-map .decomposition-pick{transform-origin:12px 12px;animation:decomposition-dig .8s steps(2,end) infinite}
+@keyframes decomposition-dig{50%{transform:rotate(-25deg)}}
+.live-map.overview-map .decomposition-icon{top:16px;left:25px;width:20px;height:20px}
+.live-map.reduced .decomposition-pick{animation:none}
+@media(prefers-reduced-motion:reduce){.live-map .decomposition-pick{animation:none}}
+
+.live-map .question-quill{animation:question-writing .6s steps(2,end) infinite}
+@keyframes question-writing{50%{transform:translate(-1px,1px)}}
+.live-map.reduced .question-quill{animation:none}
+@media(prefers-reduced-motion:reduce){.live-map .question-quill{animation:none}}
+
+/* Map-first exploration: the map and field notebook scroll independently. */
+.live-atlas .history-sidebar{width:240px}
+.live-atlas .history-sidebar.closed{width:0}
+.live-atlas .sidebar-top{position:relative;padding-top:42px}
+.live-atlas .atlas-history-close{display:grid;place-items:center;position:absolute;right:10px;top:8px;width:28px;height:28px;background:#f9f6eb;border:1px solid #d4cdb8;border-radius:4px}
+.atlas-exploring .app-main-layout>main{padding:12px 14px 0}
+.live-atlas .atlas-workspace,.live-atlas .atlas-workspace.large-map{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:12px;align-items:stretch;height:calc(100dvh - 132px);min-height:610px}
+.live-atlas .atlas-workspace.inspector-collapsed{grid-template-columns:minmax(0,1fr)}
+.atlas-workspace>.map-panel{display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden}
+.atlas-workspace>.map-panel>.panel-heading{min-height:46px;height:46px;padding:0 15px}
+.atlas-workspace>.map-panel>.panel-heading h2{font-size:15px}
+.atlas-workspace .inspector-toggle{padding:5px 8px;font-size:10px;gap:5px;white-space:nowrap}
+.atlas-workspace .map-toolbar{display:none}
+.atlas-workspace .flow-wrap{flex:1;min-height:0;display:flex}
+.atlas-workspace .live-map{flex:1;min-width:0;display:flex;flex-direction:column}
+.atlas-workspace .live-map .atlas-map{flex:1;min-height:300px;height:auto}
+.atlas-workspace .live-crew-report{box-sizing:border-box;flex:0 0 31px;height:31px;padding:7px 12px;font-size:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.atlas-workspace .live-crew-report>small{display:none}
+.atlas-workspace .map-footer{padding:7px 12px;font-size:9px;flex-shrink:0}
+.atlas-exploring footer{margin:8px 2px;font-size:8px}
+.live-atlas .atlas-inspector{display:flex;flex-direction:column;min-height:0;overflow:hidden;border-top:3px solid #708468}
+.live-atlas .atlas-inspector[hidden],.atlas-inspector [hidden]{display:none!important}
+.inspector-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 16px;background:#eee8d6;border-bottom:1px solid #d7cfb7;flex-shrink:0}
+.inspector-heading>div{display:flex;align-items:baseline;gap:10px}
+.inspector-heading span{font-size:8px;letter-spacing:.16em;color:#8d9075}
+.inspector-heading h2{font-family:'Noto Serif JP',serif;font-size:15px;letter-spacing:.1em}
+.inspector-scroll{min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#c3c5ad transparent}
+.atlas-inspector .graph-selection{display:block;padding:16px;border:0;border-bottom:1px solid #d8d1bd}
+.atlas-inspector .graph-selection>div:first-child>small{font-size:9px;letter-spacing:.08em;color:#829076}
+.atlas-inspector .graph-selection>div:first-child>strong{display:block;font-family:'Noto Serif JP',serif;font-size:18px;margin:3px 0 9px;line-height:1.5}
+.atlas-inspector .selected-description{display:none}
+.atlas-inspector .graph-selection p{font-size:10px;line-height:1.7;margin:6px 0}
+.atlas-inspector .request-progress{display:flex;align-items:flex-start;gap:9px;margin:9px 0 12px;padding:11px 12px;border:1px solid #aebfa4;border-left:4px solid #63866b;border-radius:5px;background:#edf3e7;color:#365842}
+.atlas-inspector .request-progress>svg{flex:none;margin-top:2px}
+.atlas-inspector .request-progress strong{display:block;font-size:12px;line-height:1.5}
+.atlas-inspector .request-progress p{margin:2px 0 0;font-size:11px;color:#4d6854}
+.atlas-inspector .map-node-actions{display:grid;grid-template-columns:1fr;gap:7px;margin-top:12px}
+.atlas-inspector .map-node-actions>button{width:100%;justify-content:center;font-size:11px;padding:10px 8px}
+.atlas-inspector .map-node-actions>.primary{order:-1}
+.atlas-inspector .map-node-actions>small{font-size:9px;line-height:1.7}
+.atlas-branch-links{margin-top:12px;border-top:1px dashed #d3ccb5;padding-top:8px;font-size:10px;color:#78836b}
+.atlas-branch-links summary{cursor:pointer;display:list-item}.atlas-branch-links summary span{float:right}
+.atlas-inspector .concept-links{max-height:130px;overflow:auto;margin-top:8px}
+.atlas-inspector .add-concept-area{margin-top:10px}.atlas-inspector .add-concept-area>button{font-size:10px}
+.inspector-tabs{position:sticky;top:0;z-index:8;display:grid;grid-template-columns:1fr 1fr;background:#eee9d8;border-bottom:1px solid #cfc8af;padding:0 12px}
+.inspector-tabs button{background:none;padding:13px 4px;font-size:11px;color:#8b907a;border-bottom:3px solid transparent}
+.inspector-tabs button[aria-selected=true]{color:#355640;border-bottom-color:#557951;font-weight:600}
+.atlas-inspector .question-panel,.atlas-inspector .detail-panel{border:0;border-radius:0;margin:0;box-shadow:none;min-height:0}
+.atlas-inspector .question-panel>.panel-heading{display:none}
+.atlas-inspector .exploration-stage{font-size:10px;padding:9px 16px;background:#f3efdf}
+.atlas-inspector .question-body,.atlas-inspector .feedback,.atlas-inspector .review-body,.atlas-inspector .selection-prompt{padding:18px 16px}
+.atlas-inspector .question-markdown{font-size:14px;line-height:1.85}
+.atlas-inspector .choice{padding:11px 10px;gap:9px;font-size:12px}
+.atlas-inspector .question-note{font-size:9px}
+.atlas-inspector .detail-panel>.panel-heading{height:auto;display:block;padding:15px;background:transparent}
+.atlas-inspector .detail-panel .section-number,.atlas-inspector .detail-actions>span{display:none}
+.atlas-inspector .detail-actions{margin-top:12px;display:flex;gap:9px;flex-wrap:wrap}
+.atlas-inspector .detail-actions button{font-size:10px}
+.atlas-inspector .detail-content{display:block;padding:0 16px 20px}
+.atlas-inspector .detail-content>div{padding:16px 0;margin:0;border:0;border-top:1px solid #ded8c4}
+.atlas-inspector .score-pair{gap:10px;flex-wrap:wrap}.atlas-inspector .score-pair strong{font-size:16px}
+.atlas-inspector .evidence-list{max-height:none}
+@media(min-width:1800px){.live-atlas .atlas-workspace{grid-template-columns:minmax(0,1fr) 400px}}
+@media(max-width:1150px) and (min-width:901px){.live-atlas .atlas-workspace,.live-atlas .atlas-workspace.large-map{grid-template-columns:minmax(0,1fr) 320px;height:calc(100dvh - 166px)}.live-atlas .atlas-workspace.inspector-collapsed{grid-template-columns:1fr}.live-atlas .history-sidebar{position:fixed;inset:0 auto 0 0;box-shadow:5px 0 20px #293c3328}}
+@media(max-width:900px){.live-atlas .atlas-workspace,.live-atlas .atlas-workspace.large-map{display:flex;flex-direction:column;height:auto;min-height:0}.atlas-workspace>.map-panel{height:65dvh;min-height:480px;flex-shrink:0}.live-atlas .atlas-inspector{max-height:none;overflow:visible}.inspector-scroll{overflow:visible}.atlas-workspace .live-map .atlas-map{min-height:280px}.atlas-exploring .app-main-layout>main{padding:10px 8px 0}.atlas-workspace .panel-heading h2{max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.atlas-workspace>.map-panel>.panel-heading{padding:0 10px}.inspector-tabs{position:static}.atlas-inspector .question-panel{order:0}}
+
+.live-map .crew-camp>div{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;max-height:none;overflow:visible}
+.live-map .camp-slot{width:auto;min-width:0}.live-map .camp-slot .miner{max-width:100%}
+.live-map .crew-count{display:block;color:#405c47;font-size:14px;line-height:1.3;margin-top:3px;font-variant-numeric:tabular-nums}
+.live-map .crew-count>span{font-size:8px;font-weight:400;margin-left:2px}
+.live-map .crew-dispatched{font-size:8px;color:#7c876e;line-height:1.5}
+
+/* Badges count workers remaining at camp: configured capacity minus active jobs. */
+.live-map .crew-camp .camp-slot{position:relative;height:44px;display:grid;place-items:start center}
+.live-map .crew-camp .camp-slot .miner{width:34px;height:34px}
+.live-map .crew-camp .crew-count{position:absolute;right:-1px;bottom:0;margin:0;padding:1px 3px;min-width:23px;background:#fffbed;border:1px solid #b2bda0;border-radius:3px;box-shadow:0 1px 2px #40523420;font:bold 11px/1.2 monospace;color:#35583f}
+.live-map .crew-camp .empty .miner{opacity:.45}.live-map .crew-camp .empty .crew-count{color:#939b86;border-color:#d6dbc9}
+.live-map .camp-role-tool{position:absolute;right:0;top:1px;font-size:12px;line-height:1;color:#567264;text-shadow:0 1px #fff}
+
+/* Base Camp and the journal share a row without shrinking the map. */
+.live-atlas .atlas-workspace,.live-atlas .atlas-workspace.large-map{grid-template-columns:minmax(0,1fr)}
+.live-atlas .atlas-workspace.inspector-collapsed{grid-template-columns:minmax(0,1fr)}
+.live-map .basecamp-dock{position:absolute;right:12px;top:12px;bottom:12px;z-index:8;width:min(720px,calc(100% - 24px));display:flex;flex-direction:row;align-items:flex-start;gap:10px;pointer-events:none}
+.live-map:not(.journal-open) .basecamp-dock{width:min(318px,calc(100% - 24px))}
+.live-map .basecamp-dock>*{pointer-events:auto}
+.live-map .basecamp-dock .crew-camp{position:relative;inset:auto;width:200px;flex:none}
+.live-map .notebook-toggle{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;width:108px;min-height:106px;padding:6px;border:2px solid #796b4d;border-radius:7px;background:#eee3c4;color:#354c3a;box-shadow:3px 4px 0 #574f3d4d;font:700 12px 'Noto Serif JP',serif;letter-spacing:.05em;cursor:pointer}
+.live-map .notebook-toggle[hidden]{display:none}
+.live-map .notebook-toggle .pixel-notebook{display:block;flex:none;image-rendering:pixelated;filter:drop-shadow(2px 2px 0 #3a412b30)}
+.live-map .notebook-toggle:hover{transform:translateY(-2px);background:#f6eccf}.live-map .notebook-toggle:active{transform:translateY(1px)}
+.live-map .notebook-alert{position:absolute;top:4px;right:5px;width:7px;height:7px;border-radius:50%;background:#ba7140;border:1px solid #fff7e3}
+.live-atlas .basecamp-dock .atlas-inspector{width:100%;height:100%;min-width:0;min-height:0;max-height:none;flex:1;overflow:hidden;border:2px solid #806d4c;border-top:5px solid #617453;border-radius:5px;background:#fbf5e6;box-shadow:0 10px 28px #30472e3b;animation:unfold-journal .2s ease-out;transform-origin:top right}
+.live-atlas .basecamp-dock .atlas-inspector[hidden]{display:none!important}
+@keyframes unfold-journal{from{opacity:.55;transform:scaleY(.94)}to{opacity:1;transform:scaleY(1)}}
+.basecamp-dock .inspector-heading{background:#e9ddbd;border-bottom:2px solid #bbac80;padding:10px 13px}
+.basecamp-dock .inspector-heading h2{font-size:17px;color:#3d4d39}
+.basecamp-dock .inspector-scroll{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-color:#b3aa8a transparent}
+.basecamp-dock .graph-selection{background:linear-gradient(90deg,#e8d7a6 0 4px,transparent 4px),#fbf6e9}
+.basecamp-dock .inspector-tabs{position:relative;top:auto;z-index:2;display:flex;gap:5px;flex:none;padding:9px 10px 0;background:#d8c9a7;border-bottom:3px solid #897553}
+.basecamp-dock .inspector-tabs button{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;min-height:35px;padding:7px 4px 8px;background:#c7b58e;border:2px solid #9e8b66;border-bottom:0;border-radius:7px 7px 0 0;color:#665b44;box-shadow:inset 0 2px #f0e4c3;font:600 11px 'Noto Serif JP',serif;transform:translateY(3px);cursor:pointer}
+.basecamp-dock .inspector-tabs button span{font:700 9px monospace;color:#807252}
+.basecamp-dock .inspector-tabs button[aria-selected=true]{position:relative;z-index:2;background:#fbf6e9;border-color:#897553;color:#365640;box-shadow:0 -2px 5px #564c3322, inset 0 3px #fffdf5;transform:translateY(3px)}
+.basecamp-dock .inspector-tabs button:hover:not([aria-selected=true]){background:#e0d0aa}
+.basecamp-dock .inspector-page{position:relative;min-height:100%;background:#fbf6e9}
+.basecamp-dock .inspector-page::after{content:"";position:absolute;right:0;top:0;z-index:2;width:54px;height:54px;pointer-events:none;clip-path:polygon(0 0,100% 0,100% 100%);background:linear-gradient(135deg,transparent 45%,#aa9873 49%,#e7d8b4 53%,#fff9e9 100%);transform-origin:top right;animation:journal-corner-forward .28s ease-out both}
+.basecamp-dock .inspector-page.page-question::after{left:0;right:auto;clip-path:polygon(0 0,100% 0,0 100%);background:linear-gradient(225deg,transparent 45%,#aa9873 49%,#e7d8b4 53%,#fff9e9 100%);transform-origin:top left;animation-name:journal-corner-back}
+.basecamp-dock .inspector-scroll{background:#fbf6e9;box-shadow:inset 6px 0 #d8c9a7,inset 8px 0 #eee2c4}
+@keyframes journal-corner-forward{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(.2)}}
+@keyframes journal-corner-back{from{opacity:1;transform:scale(1)}to{opacity:0;transform:scale(.2)}}
+.basecamp-dock .question-panel,.basecamp-dock .detail-panel{background:#fbf6e9}
+.basecamp-dock .question-panel .choice{background:#fffaf0}
+@media(max-width:900px){.live-atlas .atlas-workspace,.live-atlas .atlas-workspace.large-map{display:flex;flex-direction:column}.atlas-workspace>.map-panel{height:75dvh;min-height:520px}.live-map .basecamp-dock,.live-map:not(.journal-open) .basecamp-dock{right:8px;top:8px;bottom:8px;width:min(390px,calc(100% - 16px))}.live-map .basecamp-dock .crew-camp{width:165px}.live-map .notebook-toggle{width:98px;min-height:100px}.live-atlas .basecamp-dock .atlas-inspector{max-height:none;overflow:hidden}.basecamp-dock .inspector-scroll{overflow-y:auto}}
+@media(max-height:700px){.live-map .basecamp-dock .crew-camp{padding:6px 8px}.live-map .basecamp-dock .crew-camp .camp-slot{height:37px}.live-map .basecamp-dock .crew-camp .camp-slot .miner{width:29px;height:29px}}
+@media(prefers-reduced-motion:reduce){.live-atlas .basecamp-dock .atlas-inspector{animation:none}.basecamp-dock .inspector-page::after{display:none}}
+
+/* With a question ready, keep the quest prompt visible without scrolling past
+   a duplicate "generate question" action. Other branch actions stay available. */
+.basecamp-dock .inspector-has-question .graph-selection{padding:10px 15px}
+.basecamp-dock .inspector-has-question .graph-selection>div:first-child>strong{font-size:16px;margin:2px 0 4px}
+.basecamp-dock .inspector-has-question .map-node-actions{margin-top:7px}
+.basecamp-dock .inspector-has-question .map-node-actions>small{display:none}
+.basecamp-dock .inspector-has-question .atlas-branch-links{margin-top:7px;padding-top:5px}
+
+/* The journal and camera controls remain independently usable. */
+.live-map.journal-open .map-controls{right:min(744px,calc(100% - 130px))}
+@media(max-width:900px){.live-map .basecamp-dock{bottom:82px}.live-map.journal-open .map-controls{right:14px}}
+
+/* Keep the page controls fixed while longer questions scroll on the paper. */
+.basecamp-dock .inspector-scroll{overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain}
+.basecamp-dock .inspector-page{min-height:100%}
+.basecamp-dock .inspector-tabs{gap:3px;padding-inline:7px}
+.basecamp-dock .inspector-tabs button{gap:3px;font-size:10px;padding-inline:2px}
+.basecamp-dock .inspector-tabs button span{font-size:8px}
+.basecamp-dock .page-question .exploration-stage{padding:7px 13px}
+.basecamp-dock .page-question .question-body,.basecamp-dock .page-question .feedback,.basecamp-dock .page-question .review-body,.basecamp-dock .page-question .selection-prompt{padding:12px 13px}
+.basecamp-dock .page-question .question-markdown{font-size:13px;line-height:1.65}
+.basecamp-dock .page-question .choice{padding:8px;min-height:39px}
+.basecamp-dock .page-request .graph-selection{padding:12px 14px}
+.basecamp-dock .page-request .graph-selection>div:first-child>strong{font-size:16px;margin:2px 0 5px}
+.basecamp-dock .page-request .map-node-actions{margin-top:8px;gap:5px}
+.basecamp-dock .page-request .map-node-actions>button{padding:7px 8px;min-height:32px}
+.basecamp-dock .page-request .atlas-branch-links{margin-top:7px;padding-top:5px}
+.notebook-page-footer{display:flex;justify-content:space-between;align-items:center;gap:8px;flex:none;padding:6px 12px;border-top:1px solid #d6c9a9;background:#f2ead5;color:#8a7d60;font-size:10px}
+.notebook-page-footer button{display:flex;align-items:center;gap:4px;background:none;color:#416b51;font-size:10px}
+.notebook-record-preview{padding:18px 16px;color:#50634e}
+.notebook-record-preview h3{font:600 20px/1.5 'Noto Serif JP',serif;margin:8px 0}
+.notebook-record-preview>p{font-size:11px;line-height:1.7;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.notebook-record-preview dl{display:grid;gap:0;margin:16px 0;border-top:1px solid #dfd4b7}
+.notebook-record-preview dl>div{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #dfd4b7;font-size:11px}
+.notebook-record-preview dt{color:#8a8e77}.notebook-record-preview dd{margin:0;font-weight:700;color:#406149}
+.notebook-record-preview .primary{margin-top:12px}
+.atlas-reading-overlay{position:fixed;inset:0;z-index:90;overflow-y:auto;background:#ded8c6;padding:24px 16px 48px}
+.atlas-reading-sheet{max-width:850px;margin:0 auto;background:#fbf7ec;min-height:calc(100dvh - 72px);border:2px solid #867253;box-shadow:0 16px 40px #384c3440}
+.atlas-reading-sheet>header{position:sticky;top:-24px;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 20px;background:#e8dcbb;border-bottom:2px solid #ae9b73}
+.atlas-reading-sheet>header span{font-size:9px;color:#807d65}.atlas-reading-sheet>header h2{font:600 20px 'Noto Serif JP',serif}
+.atlas-reading-sheet>header button{display:flex;align-items:center;gap:6px}
+
+.atlas-self-check{margin:12px 0;padding:12px;border:1px solid #c9ba92;border-radius:5px;background:#fffaf0;box-shadow:inset 3px 0 #dbc694}
+.atlas-self-check .question-kicker{font-size:9px;letter-spacing:.12em;color:#806c46}
+.atlas-self-check h3{margin:5px 0 11px;font:600 15px/1.5 'Noto Serif JP',serif;color:#344d3c}
+.atlas-self-check-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.atlas-self-check-options button{min-width:0;min-height:37px;border:1px solid #aa9b78;border-radius:4px;background:#f2e7c9;color:#365641;font:600 11px/1.3 'Noto Serif JP',serif;cursor:pointer}
+.atlas-self-check-options button:hover:not(:disabled){background:#e4d4a9}
+.atlas-self-check-options button:focus-visible{outline:2px solid #315f47;outline-offset:2px}
+.atlas-self-check-options button:disabled{opacity:.58;cursor:wait}
+.atlas-self-check-options .atlas-self-choice.chosen{border-color:#345c45;background:#496e53;color:#fffaf0;box-shadow:inset 0 0 0 2px #d4e4c5}
+.atlas-self-check-options .atlas-question-choice{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:7px;min-height:40px;background:#355c48;color:#fffaf0;border-color:#294b38;font-size:12px}
+.atlas-self-check-options .atlas-question-choice:hover:not(:disabled){background:#284b38}
+.atlas-self-check-options .atlas-question-choice.chosen{box-shadow:inset 0 0 0 2px #d4e4c5}
+.atlas-inspector .atlas-self-check p,.atlas-pre-question .atlas-self-check p{margin:10px 0 0;color:#67745f;font-size:10px;line-height:1.6}
+.atlas-pre-question>.atlas-self-check{margin-top:5px}
+.atlas-reading-sheet>.graph-selection{display:block;padding:22px;border:0}.atlas-reading-sheet>.graph-selection .selected-description{display:block}
+.atlas-reading-sheet>.question-panel,.atlas-reading-sheet>.detail-panel{margin:0;border:0;box-shadow:none}
+@media(max-width:900px){
+  .live-map.journal-open .basecamp-dock{z-index:80}
+  .live-map.journal-open .basecamp-dock .crew-camp{visibility:hidden}
+  .live-atlas .basecamp-dock .atlas-inspector{position:fixed;inset:8px;width:auto;height:auto;max-height:none;flex:none;border-radius:5px;animation:none}
+  .basecamp-dock .inspector-scroll{flex:1;overflow-y:auto;overflow-x:hidden}
+  .atlas-reading-overlay{padding:0}
+  .atlas-reading-sheet{min-height:100dvh;border:0}
+  .atlas-reading-sheet>header{top:0;padding:12px}
+}
+
+/* Legible ink and controls on the small parchment pages. */
+.basecamp-dock .inspector-heading span{font-size:10px;color:#4e5c49;letter-spacing:.08em}
+.basecamp-dock .inspector-heading h2{font-size:19px;color:#243e31}
+.basecamp-dock .inspector-heading button{color:#314c3b}
+.basecamp-dock .inspector-tabs button{font-size:12px;font-weight:700;color:#3e382b;min-height:41px;letter-spacing:0}
+.basecamp-dock .inspector-tabs button span{font-size:10px;color:#574e3b}
+.basecamp-dock .inspector-tabs button[aria-selected=true]{color:#1f4a34}
+.basecamp-dock .inspector-tabs button[aria-selected=true] span{color:#365741}
+.basecamp-dock .graph-selection>div:first-child>small{font-size:11px;color:#4b6351;letter-spacing:0}
+.basecamp-dock .page-request .graph-selection>div:first-child>strong{font-size:18px;color:#253e32;line-height:1.45}
+.basecamp-dock .graph-selection p{font-size:12px;color:#4f6552;line-height:1.6}
+.basecamp-dock .page-request .map-node-actions{gap:8px;margin-top:12px}
+.basecamp-dock .page-request .map-node-actions>button{min-height:42px;padding:9px 10px;font-size:13px;font-weight:700;line-height:1.45}
+.live-atlas .basecamp-dock .primary{color:#fffdf2;background:#315a43}
+.live-atlas .basecamp-dock .primary:disabled{opacity:1;color:#f3f2e6;background:#6f8975}
+.live-atlas .basecamp-dock .secondary{color:#274635;background:#f7f2e3;border-color:#b4a98a}
+.basecamp-dock .atlas-branch-links{font-size:12px;color:#455e4b}
+.basecamp-dock .add-concept-area>button{font-size:12px;font-weight:600;min-height:38px}
+.basecamp-dock .page-question .exploration-stage{font-size:11px;color:#4c614b}
+.basecamp-dock .page-question .question-markdown{font-size:15px;line-height:1.7;color:#253e32}
+.basecamp-dock .page-question .choice{min-height:44px;font-size:13px;color:#263e32}
+.basecamp-dock .question-kicker{font-size:10px;color:#4d7055}
+.basecamp-dock .question-note{font-size:11px;color:#5d705d}
+.notebook-page-footer{font-size:11px;color:#556b53}
+.notebook-page-footer button{font-size:11px;font-weight:700;color:#315a43}
+.notebook-record-preview>p,.notebook-record-preview dl>div{font-size:12px;color:#344c3b}

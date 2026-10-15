@@ -1,0 +1,45 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      GEMINI_BACKEND: ${GEMINI_BACKEND:-vertex}
+      GOOGLE_CLOUD_PROJECT: ${GOOGLE_CLOUD_PROJECT:-}
+      GOOGLE_CLOUD_LOCATION: ${GOOGLE_CLOUD_LOCATION:-global}
+      GCP_CONFIG_DIR: /run/gcp_config
+      GOOGLE_APPLICATION_CREDENTIALS: ${GCP_CREDENTIALS_CONTAINER_PATH:-}
+      LLM_TIMEOUT_SECONDS: ${LLM_TIMEOUT_SECONDS:-60}
+      PREFETCH_AHEAD_LAYERS: ${PREFETCH_AHEAD_LAYERS:-1}
+      PREFETCH_CONCURRENCY: ${PREFETCH_CONCURRENCY:-10}
+      CHAT_PROCESSING_CONCURRENCY: ${CHAT_PROCESSING_CONCURRENCY:-10}
+      INITIAL_MAX_CHILDREN: ${INITIAL_MAX_CHILDREN:-5}
+      EXPANSION_MAX_CHILDREN: ${EXPANSION_MAX_CHILDREN:-4}
+      EMBEDDING_BACKEND: ${EMBEDDING_BACKEND:-auto}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-gemini-embedding-001}
+      EMBEDDING_LOCATION: ${EMBEDDING_LOCATION:-us-central1}
+      EMBEDDING_TIMEOUT_SECONDS: ${EMBEDDING_TIMEOUT_SECONDS:-8}
+      CONCEPT_RELATED_THRESHOLD: ${CONCEPT_RELATED_THRESHOLD:-0.80}
+      CONCEPT_MERGE_CANDIDATE_THRESHOLD: ${CONCEPT_MERGE_CANDIDATE_THRESHOLD:-0.85}
+      CONCEPT_STRONG_MERGE_THRESHOLD: ${CONCEPT_STRONG_MERGE_THRESHOLD:-0.92}
+      CONCEPT_MERGE_CONFIDENCE_THRESHOLD: ${CONCEPT_MERGE_CONFIDENCE_THRESHOLD:-0.80}
+      CONCEPT_MERGE_TOP_K: ${CONCEPT_MERGE_TOP_K:-5}
+      GEMINI_API_KEY: ${GEMINI_API_KEY:-}
+      GEMINI_MODEL: ${GEMINI_MODEL:-gemini-3.5-flash-lite}
+      DATABASE_URL: sqlite:////data/diagnostic.db
+      FRONTEND_ORIGIN: ${FRONTEND_ORIGIN:-http://localhost:5173}
+    volumes:
+      - sessions:/data
+      - ./gcp_config:/run/gcp_config:ro
+    ports:
+      - "127.0.0.1:8000:8000"
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "127.0.0.1:5173:80"
+    depends_on:
+      - backend
+volumes:
+  sessions:

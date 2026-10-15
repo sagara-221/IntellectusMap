@@ -1,0 +1,19 @@
+.venv
+.env
+.env.*
+*.env
+*.env.*
+**/node_modules
+**/dist
+**/__pycache__
+**/.pytest_cache
+**/test-results
+*.db
+*.log
+.git
+
+# Local credentials & scratch files
+gcp_config/
+scratch/
+memo/
+tmp/
